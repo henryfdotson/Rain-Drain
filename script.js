@@ -13,6 +13,24 @@ function randomDelay() {
   return randomDelay;
 }
 
+//NOTE NEED TO REWRITE THIS TO BE BASED AROUND ADDING A CSS CLASS CALLED LEVELRISE
+function waterLevelRise() {
+  var waterLevel = document.getElementById("waterLevel");
+  // One second interval
+  var interval = window.setInterval(1000);
+  var intervalCount = 0;
+
+  for(var i = 0; i < 590; i++) {
+    (function(index) {
+        setTimeout(function() {
+          currentWaterLevel = waterLevel.clientHeight;
+          newWaterLevel = currentWaterLevel+1;
+          waterLevel.style.height = newWaterLevel+"px";
+        }, index*1000);
+    })(i);
+  }
+}
+
 
 function makeItRain() {
   //Create 100 unique raindrops
@@ -33,30 +51,19 @@ function makeItRain() {
     raindropSource.after(cloneDrop);
 
   }
+  // Water level rise start
+  waterLevelRise();
 }
 
-function waterLevelRise() {
-  var waterLevel = document.getElementById("waterLevel");
-  // One second interval
-  var interval = window.setInterval(1000);
-  var intervalCount = 0;
+// Need to rewrite this. Needs to be based around modifying css classes to end the infinite looping animation
+function rainStop() {
+  const raindrops = document.querySelectorAll('.raindrop');
 
-  for(var i = 0; i < 590; i++) {
-    (function(index) {
-        setTimeout(function() {
-          currentWaterLevel = waterLevel.clientHeight;
-          newWaterLevel = currentWaterLevel+1;
-          waterLevel.style.height = newWaterLevel+"px";
-        }, index*1000);
-    })(i);
-  }
-      
-
+  raindrops.forEach(raindrop => {
+  raindrop.remove();
+  });
 }
 
 function drain() {
-
+  //Need to write this. Will be based around removing LEVELRISE css class and adding a new drain css class.
 }
-
-makeItRain();
-waterLevelRise();

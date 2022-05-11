@@ -34,8 +34,12 @@
   animation-timing-function: linear;
 }
 
-button#drain {
+#rainDrop0 {
+  display: none;
+}
+
+#buttons {
   position: absolute;
   bottom: 0px;
-  left: 50%;
+  margin: 1rem;
 }
