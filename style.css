@@ -1,0 +1,41 @@
+@keyframes rainfall {
+  0% {top: 0vh;}
+  100% {top: 95vh;}
+
+}
+
+#cloud {
+  display: block;
+  background: url(cloud.png);
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  z-index: 1;
+}
+
+#waterlevel {
+  display: block;
+  background: #076bff;
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  bottom: 0px;
+}
+
+.rainDrop {
+  width: 3px;
+  height: 4vh;
+  background: #9099a1;
+  position: absolute;
+  top: 0vh;
+  animation-name: rainfall;
+  animation-duration: 0.75s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+button#drain {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+}
