@@ -1,6 +1,12 @@
 @keyframes rainfall {
   0% {top: 0vh;}
-  100% {top: 95vh;}
+  100% {top: 100vh;}
+
+}
+
+@keyframes rising {
+  0% {height: 0px;}
+  100% {height: 95vh;}
 
 }
 
@@ -17,9 +23,19 @@
   display: block;
   background: #076bff;
   width: 100%;
-  height: 10px;
+  height: 0px;
   position: absolute;
   bottom: 0px;
+}
+
+.rising {
+  animation-name: rising;
+  animation-duration: 180s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.stopped {
+  background-color: red !important;
 }
 
 .rainDrop {
@@ -36,6 +52,13 @@
 
 #rainDrop0 {
   display: none;
+}
+
+.falling {
+  animation-name: rainfall;
+  animation-duration: 0.75s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
 #buttons {

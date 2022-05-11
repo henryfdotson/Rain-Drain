@@ -13,22 +13,10 @@ function randomDelay() {
   return randomDelay;
 }
 
-//NOTE NEED TO REWRITE THIS TO BE BASED AROUND ADDING A CSS CLASS CALLED LEVELRISE
+
 function waterLevelRise() {
   var waterLevel = document.getElementById("waterLevel");
-  // One second interval
-  var interval = window.setInterval(1000);
-  var intervalCount = 0;
-
-  for(var i = 0; i < 590; i++) {
-    (function(index) {
-        setTimeout(function() {
-          currentWaterLevel = waterLevel.clientHeight;
-          newWaterLevel = currentWaterLevel+1;
-          waterLevel.style.height = newWaterLevel+"px";
-        }, index*1000);
-    })(i);
-  }
+  waterLevel.classList.add("rising");
 }
 
 
@@ -43,6 +31,7 @@ function makeItRain() {
     var cloneDrop = raindropSource.cloneNode(true);
     //Update the ID and add class
     cloneDrop.id = raindropname;
+    cloneDrop.classList.add('falling');
     cloneDrop.classList.add('raindrop');
     // Add random "left" attribute position
     cloneDrop.style.left = randomLeftPosition()+"%";
@@ -60,7 +49,10 @@ function rainStop() {
   const raindrops = document.querySelectorAll('.raindrop');
 
   raindrops.forEach(raindrop => {
-  raindrop.remove();
+  //Need to remove animated css class and add a paused class
+  raindrop.classList.remove("rising");
+  raindrop.classList.add("stopped");
+
   });
 }
 
