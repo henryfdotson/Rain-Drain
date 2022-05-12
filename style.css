@@ -10,6 +10,14 @@
 
 }
 
+@keyframes drainAnimation {
+  100% {height: 0px;}
+}
+
+body {
+  background-color: #6666aa;
+}
+
 #cloud {
   display: block;
   background: url(cloud.png);
@@ -34,8 +42,25 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
 .stopped {
-  background-color: red !important;
+  -webkit-animation-play-state:paused;
+    -moz-animation-play-state:paused;
+    -o-animation-play-state:paused; 
+    animation-play-state:paused;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.4s, opacity 0.4s linear;
+}
+
+.drain {
+  animation-name: drainAnimation;
+  animation-duration: 5;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 .rainDrop {

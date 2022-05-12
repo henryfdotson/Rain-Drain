@@ -16,6 +16,8 @@ function randomDelay() {
 
 function waterLevelRise() {
   var waterLevel = document.getElementById("waterLevel");
+  waterLevel.classList.remove("drain");
+  waterLevel.classList.remove("stopped");
   waterLevel.classList.add("rising");
 }
 
@@ -32,6 +34,8 @@ function makeItRain() {
     //Update the ID and add class
     cloneDrop.id = raindropname;
     cloneDrop.classList.add('falling');
+    cloneDrop.classList.remove("hidden");
+    cloneDrop.classList.remove("stopped");
     cloneDrop.classList.add('raindrop');
     // Add random "left" attribute position
     cloneDrop.style.left = randomLeftPosition()+"%";
@@ -47,15 +51,22 @@ function makeItRain() {
 // Need to rewrite this. Needs to be based around modifying css classes to end the infinite looping animation
 function rainStop() {
   const raindrops = document.querySelectorAll('.raindrop');
+  const waterLevel = document.getElementById('waterLevel');
 
   raindrops.forEach(raindrop => {
   //Need to remove animated css class and add a paused class
   raindrop.classList.remove("rising");
+  raindrop.classList.add("hidden");
   raindrop.classList.add("stopped");
+  waterLevel.classList.remove("drain");
+  waterLevel.classList.add("stopped");
 
   });
 }
 
 function drain() {
-  //Need to write this. Will be based around removing LEVELRISE css class and adding a new drain css class.
+  var waterLevel = document.getElementById("waterLevel");
+  waterLevel.classList.remove("stopped");
+  waterLevel.classList.remove("rising");
+  waterLevel.classList.add("drain");
 }
