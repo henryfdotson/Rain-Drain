@@ -1,21 +1,21 @@
 const cloud = document.getElementById("cloud");
-var waterLevel = document.getElementById("waterLevel");
+let waterLevel = document.getElementById("waterLevel");
 
 function randomLeftPosition() {
   // Gerate a random rounded number between 1 to 10;
-  var randomNumber = Math.floor(Math.random() * 100) + 1;
+  let randomNumber = Math.floor(Math.random() * 99) + 1;
   return randomNumber;
 }
 
 function randomDelay() {
   // Gerate a random rounded number between 1 to 10;
-  var randomDelay = Math.random();
+  let randomDelay = Math.random();
   return randomDelay;
 }
 
 
 function waterLevelRise() {
-  var waterLevel = document.getElementById("waterLevel");
+  let waterLevel = document.getElementById("waterLevel");
   waterLevel.classList.remove("drain");
   waterLevel.classList.remove("stopped");
   waterLevel.classList.add("rising");
@@ -28,9 +28,9 @@ function makeItRain() {
     // Give each drop a name
     raindropname = "raindrop"+i;
     //get the source drop
-    var raindropSource = document.querySelector('#rainDrop0');
+    let raindropSource = document.querySelector('#rainDrop0');
     // Create a copy of it
-    var cloneDrop = raindropSource.cloneNode(true);
+    let cloneDrop = raindropSource.cloneNode(true);
     //Update the ID and add class
     cloneDrop.id = raindropname;
     cloneDrop.classList.add('falling');
@@ -65,8 +65,17 @@ function rainStop() {
 }
 
 function drain() {
-  var waterLevel = document.getElementById("waterLevel");
-  waterLevel.classList.remove("stopped");
+  let waterLevel = document.getElementById("waterLevel");
+  const raindrops = document.querySelectorAll('.raindrop');
+  let waterLevelCurrentHeight = waterLevel.clientHeight;
+  
+  waterLevel.classList.add("stopped");
+
+  raindrops.forEach(raindrop => {
+    //Need add a paused class
+      raindrop.classList.add("hidden");
+      raindrop.classList.add("stopped");
+    });
   waterLevel.classList.remove("rising");
   waterLevel.classList.add("drain");
 }

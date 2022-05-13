@@ -1,21 +1,22 @@
 @keyframes rainfall {
-  0% {top: 0vh;}
-  100% {top: 100vh;}
+  0% {top: 10vh;}
+  100% {top: 90vh;}
 
 }
 
 @keyframes rising {
-  0% {height: 0px;}
-  100% {height: 95vh;}
+  0% {height: 10px;}
+  100% {height: 90vh;}
 
 }
 
-@keyframes drainAnimation {
+/* @keyframes drainAnimation {
   100% {height: 0px;}
-}
+} */
 
 body {
   background-color: #6666aa;
+  height: 100%;
 }
 
 #cloud {
@@ -56,12 +57,12 @@ body {
   transition: visibility 0s 0.4s, opacity 0.4s linear;
 }
 
-.drain {
+/* .drain {
   animation-name: drainAnimation;
   animation-duration: 5;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
-}
+} */
 
 .rainDrop {
   width: 3px;
