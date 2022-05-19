@@ -67,8 +67,22 @@ function rainStop() {
 function drain() {
   let waterLevel = document.getElementById("waterLevel");
   const raindrops = document.querySelectorAll('.raindrop');
+  // Get current height of waterLevel
   let waterLevelCurrentHeight = waterLevel.clientHeight;
-  
+
+  // Clever JS/CSS trick to set variable starting keyframe value
+  // waterLevel.animate([
+  //   // keyframes
+  //   { transform: 'translateY(-300px)' }, 
+  //   { transform: 'translateY(0px)' }
+  // ], { 
+  //   // timing options
+  //   duration: 1000,
+  //   iterations: 1
+  // });
+
+
+
   waterLevel.classList.add("stopped");
 
   raindrops.forEach(raindrop => {
